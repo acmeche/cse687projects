@@ -21,12 +21,18 @@
     <ClCompile Include="TestRunner.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LambdaTestCase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TestHarness.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TestCaseBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LambdaTestCase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -19,10 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="LambdaTestCase.cpp" />
     <ClCompile Include="TestHarness.cpp" />
     <ClCompile Include="TestRunner.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="LambdaTestCase.h" />
     <ClInclude Include="TestCaseBase.h" />
     <ClInclude Include="TestHarness.h" />
   </ItemGroup>
