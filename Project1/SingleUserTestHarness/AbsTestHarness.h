@@ -19,27 +19,34 @@
 */
 #pragma once
 #include <ostream>
-#include "LamdaTestCase.h"
 #include "AbsTestHarness.h"
 
 class AbsTestHarness
 {
 public:
-	virtual void runAbsTestHarness() = 0;		    // Pure virtual function for interface
-
-	virtual bool test1(std::ostream& output) = 0;	// Pure virtual function for interface
-		
-	virtual void someTest2(/*some argument?*/) = 0;	// Pure virtual function for interface
+	/**
+	* Since the child classes will inherit the parent class, we can declare child classes like:
+	* LambdaTestCase test(std::cout)
+	*/
+	AbsTestHarness(std::ostream& output) : m_output(output) {};
 
 	//Will a virtual function for logging go here?
-	
-	virtual ~AbsTestHarness();						// Virtual destructor
+	// No, most of that should be done in the logging class, we just need a protected member variable to hold that class. Then we can call the logging methods in that class from the child test classes
+	virtual ~AbsTestHarness() = default;						// Virtual destructor
+
+	/**
+	* We shouldn't need a whole bunch of pure virtual methods here, unless we want all child classes to implement those. Perhaps we do, just a thought...
+
+	virtual bool test1(std::ostream& output) = 0;	// Pure virtual function for interface
+
+	virtual void someTest2(/*some argument?/) = 0;	// Pure virtual function for interface
+	*/
+
+	virtual void runTests() = 0;					// Pure virtual function for interface
 	
 protected:
+	// Use this for now until logger class is created, then we'll replace stream with that
 	std::ostream& m_output;							// Private member data from accessed Objects
-
-	std::ostream& n_output;							// Do all of our tests need a place to put the
-													// results?
 };
 
 

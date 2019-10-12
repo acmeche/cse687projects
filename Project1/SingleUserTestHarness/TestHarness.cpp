@@ -17,12 +17,16 @@
 	----		-------		----------------------------------------------------------------------
 	10/8/2019	1.0			Initial Creation
 */
+#include <iostream>
+
 #include "TestHarness.h"
+#include "LambdaTestCase.h"
 
 namespace SingleUserTestHarness
 {
 	void TestHarness::runTests() 
 	{
+		LambdaTestCase lamTests(std::cout);
+		lamTests.runTests();
 	}
-
 }
