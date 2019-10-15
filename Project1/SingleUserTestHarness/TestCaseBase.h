@@ -18,14 +18,42 @@
 	DATE		VERSION		DESCRIPTION
 	----		-------		----------------------------------------------------------------------
 	10/8/2019	1.0			Initial Creation
+	10/15/2019	1.1			Added test harness framework		
 */
 #pragma once
+#include <string>
+#include <vector>
 
-namespace SingleUserTestHarness 
-{
-	class TestCaseBase
-	{
+namespace CSE687_Project1 {
+
+	class TestCaseBase {
 	public:
-		bool execute();
+		virtual bool execute() = 0;
 	};
+
+	template<class T> TestCaseBase* testCaseBase_factory() {
+		return new T;
+	}
+
+	typedef TestCaseBase* (*testCaseBase_creator)(void);
+
+	class TestCaseRegistry {
+	private:
+		std::vector<testCaseBase_creator> m_testCases;
+	public:
+		typedef std::vector<testCaseBase_creator>::iterator iterator;
+		static TestCaseRegistry& get();
+		void add(testCaseBase_creator);
+		iterator begin();
+		iterator end();
+	};
+
+	class TestCaseRegistration {
+	public:
+		TestCaseRegistration(testCaseBase_creator);
+	};
+
+#define REGISTER_TEST_CASE(testCase) \
+    TestCaseRegistration _testCase_registration_ ## testCase(&testCaseBase_factory<testCase>);
+
 }

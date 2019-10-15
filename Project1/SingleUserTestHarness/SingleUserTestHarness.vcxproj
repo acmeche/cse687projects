@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LambdaTestCase.cpp" />
+    <ClCompile Include="TestCaseBase.cpp" />
     <ClCompile Include="TestHarness.cpp" />
     <ClCompile Include="TestRunner.cpp" />
   </ItemGroup>

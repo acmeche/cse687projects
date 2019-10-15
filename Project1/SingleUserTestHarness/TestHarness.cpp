@@ -16,17 +16,27 @@
 	DATE		VERSION		DESCRIPTION
 	----		-------		----------------------------------------------------------------------
 	10/8/2019	1.0			Initial Creation
+	10/15/2019	1.1			Added test harness framework	
 */
 #include <iostream>
-
+#include "TestCaseBase.h"
 #include "TestHarness.h"
-#include "LambdaTestCase.h"
+using namespace CSE687_Project1;
 
-namespace SingleUserTestHarness
+void CSE687_Project1::TestHarness::runTests()
 {
-	void TestHarness::runTests() 
-	{
-		LambdaTestCase lamTests(std::cout);
-		lamTests.runTests();
+	try {
+		TestCaseRegistry& testCaseRegistry(TestCaseRegistry::get());
+		for (TestCaseRegistry::iterator it = testCaseRegistry.begin(); it != testCaseRegistry.end(); ++it)
+		{
+			testCaseBase_creator func = *it;
+			TestCaseBase* funcPtr = func();
+			std::auto_ptr<TestCaseBase> testCase(funcPtr);
+			testCase->execute();
+		}
+	}
+	catch (...) {
+		// Need to add Logger logic
+		std::cout << "An error occured." << std::endl;
 	}
 }

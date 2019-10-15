@@ -18,10 +18,11 @@
 	10/8/2019	1.0			Initial Creation
 */
 #include "TestHarness.h"
+using namespace CSE687_Project1;
 
 int main()
 {
-	SingleUserTestHarness::TestHarness harness;
+	TestHarness harness;
 	harness.runTests();
 
 	return 0;
