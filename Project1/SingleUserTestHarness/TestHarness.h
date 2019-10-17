@@ -19,7 +19,7 @@
 */
 #pragma once
 
-namespace SingleUserTestHarness
+namespace CSE687_Project1
 {
 	class TestHarness
 	{
