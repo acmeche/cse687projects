@@ -25,7 +25,6 @@
     <ClCompile Include="TestRunner.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AbsTestHarness.h" />
     <ClInclude Include="LambdaTestCase.h" />
     <ClInclude Include="TestCaseBase.h" />
     <ClInclude Include="TestHarness.h" />

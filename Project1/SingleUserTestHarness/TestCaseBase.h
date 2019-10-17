@@ -23,12 +23,13 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <vector>
 
 namespace CSE687_Project1 {
 
 	class TestCaseBase {
-	public:
-		virtual bool execute() = 0;
+		public:
+			virtual bool execute() = 0;
 	};
 
 	template<class T> TestCaseBase* testCaseBase_factory() {
@@ -53,6 +54,12 @@ namespace CSE687_Project1 {
 		TestCaseRegistration(testCaseBase_creator);
 	};
 
+/**
+* Define command that, when added to the source file of a TestCase, automatically adds it to a list of TestCase objects to run
+* Satisfies the following project criteria:
+*	1.) Shall be prepared using the latest version of Visual Studio, and written in the standard C++ programming language, using the standard C++ libraries.
+*	4.) Shall support linking any number of callable objects for execution, and shall provide a mechanism for executing that sequence.
+*/
 #define REGISTER_TEST_CASE(testCase) \
     TestCaseRegistration _testCase_registration_ ## testCase(&testCaseBase_factory<testCase>);
 

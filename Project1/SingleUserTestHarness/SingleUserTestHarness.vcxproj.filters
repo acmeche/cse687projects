@@ -38,8 +38,5 @@
     <ClInclude Include="LambdaTestCase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AbsTestHarness.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
