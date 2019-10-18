@@ -1,35 +1,40 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
-//	File:			TestCaseBase.cpp															//
-//	Purpose:		Base class from which new Test Case classes are derived that encapsulate	// 
-//					unit tests executed by the Test Harness for unit testing C++ code for		// 
-//					projects created for CSE687													//
-//	Version:		1.0																			//
-//	Language:		C++, Visual Studio 2019														//
-//	Platform:		Windows 10																	//
-//	Application:	Single-User Test Harness, CSE687 - Object Oriented Design					//
-//	Author:			Laamont Harrington															//
-//					Aaron Meche																	//
-//					Chris Johnson																//
-//					Jason Mitchell																//
+// File:        TestCaseBase.h																
+// Purpose:     Header file for Test Case base class from which new Test Case classes are 
+//              derived that encapsulate unit tests executed by the Test Harness for unit testing 
+//              C++ code for projects created for CSE687
+// Version:     1.0																			
+// Language:    C++, Visual Studio 2019														
+// Platform:    Windows 10																	
+// Application: Single-User Test Harness, CSE687 - Object Oriented Design					
+// Author:      Lamont Harrington															
+//              Aaron Meche																	
+//              Chris Johnson																
+//              Jason Mitchell																
 //////////////////////////////////////////////////////////////////////////////////////////////////
 /*
-	Maintenance History
-	===================
-	DATE		VERSION		DESCRIPTION
-	----		-------		----------------------------------------------------------------------
-	10/8/2019	1.0			Initial Creation
-	10/15/2019	1.1			Added test harness framework		
+   Maintenance History
+   ===================
+   DATE         VERSION     DESCRIPTION
+   ----         -------     ----------------------------------------------------------------------
+   10/8/2019    1.0         Initial Creation
+   10/15/2019   1.0         Added test harness frameweork
+   10/18/2019   1.0         Added Logger as a protected member. Each test case instance will be 
+                            responsible for their own logging
 */
 #pragma once
 #include <string>
 #include <vector>
 #include <vector>
+#include "Logger.h"
 
 namespace CSE687_Project1 {
 
 	class TestCaseBase {
 		public:
 			virtual bool execute() = 0;
+	protected:
+		Logger logger;
 	};
 
 	template<class T> TestCaseBase* testCaseBase_factory() {

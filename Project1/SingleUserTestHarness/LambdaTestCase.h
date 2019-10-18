@@ -1,24 +1,24 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
-//	File:			LambdaTestCase.h															//
-//	Purpose:		--ADD PURPOSE HERE--														//
-//	Version:		1.0																			//
-//	Language:		C++, Visual Studio 2019														//
-//	Platform:		Windows 10																	//
-//	Application:	Single-User Test Harness, CSE687 - Object Oriented Design					//
-//	Author:			Laamont Harrington															//
-//					Aaron Meche																	//
-//					Chris Johnson																//
-//					Jason Mitchell																//
+// File:        LambdaTestCase.h																
+// Purpose:     Header file for LambdaTestCase class
+// Version:     1.0																			
+// Language:    C++, Visual Studio 2019														
+// Platform:    Windows 10																	
+// Application: Single-User Test Harness, CSE687 - Object Oriented Design					
+// Author:      Lamont Harrington															
+//              Aaron Meche																	
+//              Chris Johnson																
+//              Jason Mitchell																
 //////////////////////////////////////////////////////////////////////////////////////////////////
 /*
-	Maintenance History
-	===================
-	DATE		VERSION		DESCRIPTION
-	----		-------		----------------------------------------------------------------------
-	10/8/2019	1.0			Initial Creation
-	10/15/2019	1.1			Changed test case base class implementation
-	10/17/2019  1.2			Refactored original implementation in order to work with TestCaseBase
-							redesign
+   Maintenance History
+   ===================
+   DATE         VERSION     DESCRIPTION
+   ----         -------     ----------------------------------------------------------------------
+   10/8/2019    1.0         Initial Creation
+   10/15/2019   1.0         Changed test cae base class implementation
+   10/17/2019   1.0			Refactored original implementation in order to work with TestCaseBase
+                            redesign
 */
 #pragma once
 #include "TestCaseBase.h"

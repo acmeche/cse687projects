@@ -1,36 +1,32 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
-//	File:			FunctorTestCase.h															//
-//	Purpose:		Derived class from TestBaseCase classe for the Single User Test Harness		// 
-//																								//
-//	Version:		1.0																			//
-//	Language:		C++, Visual Studio 2019														//
-//	Platform:		Windows 10																	//
-//	Application:	Single-User Test Harness, CSE687 - Object Oriented Design					//
-//	Author:			Laamont Harrington															//
-//					Aaron Meche																	//
-//					Chris Johnson																//
-//					Jason Mitchell																//
+// File:        FunctorTestCase.h															
+// Purpose:     Derived class from TestBaseCase classe for the Single User Test Harness		 
+//																								
+// Version:     1.0																			
+// Language:    C++, Visual Studio 2019														
+// Platform:    Windows 10																	
+// Application: Single-User Test Harness, CSE687 - Object Oriented Design					
+// Author:      Laamont Harrington															
+//              Aaron Meche																	
+//              Chris Johnson																
+//              Jason Mitchell																
 //////////////////////////////////////////////////////////////////////////////////////////////////
 /*
-	Maintenance History
-	===================
-	DATE		VERSION		DESCRIPTION
-	----		-------		----------------------------------------------------------------------
-	10/15/2019	1.0			Initial Creation
+   Maintenance History
+   ===================
+   DATE          VERSION        DESCRIPTION
+   ----          -------		------------------------------------------------------------------
+   10/15/2019    1.0            Initial Creation
+   10/18/2019    1.0			Code cleanup
 */
 #pragma once
 #include "TestCaseBase.h"
 
 namespace CSE687_Project1 {
 	class FunctorTestCase : public TestCaseBase {
-	public:
-		bool execute();
-	};
-
-	class Functor1 : public TestCaseBase {
 		bool result;
 	public:
-		Functor1() = default;
+		FunctorTestCase() = default;
 		bool execute();
 		void operator()(int x) {
 			if (x % 2 == 0) {
@@ -49,7 +45,7 @@ namespace CSE687_Project1 {
 		/*
 		 * Just something here to hold for errors.
 		 */
-		Functor1(std::ostream& output);
+		//FunctorTestCase(std::ostream& output);
 	};
 	void Line() {
 		std::cout << "=====================" << std::endl;

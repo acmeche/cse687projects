@@ -1,22 +1,22 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
-//	File:			LambdaTestCase.cpp															//
-//	Purpose:		--ADD PURPOSE HERE--														//
-//	Version:		1.0																			//
-//	Language:		C++, Visual Studio 2019														//
-//	Platform:		Windows 10																	//
-//	Application:	Single-User Test Harness, CSE687 - Object Oriented Design					//
-//	Author:			Laamont Harrington															//
-//					Aaron Meche																	//
-//					Chris Johnson																//
-//					Jason Mitchell																//
+// File:        LambdaTestCase.cpp																
+// Purpose:     This file contains the implementation for the LambdaTestCase test case
+// Version:     1.0																			
+// Language:    C++, Visual Studio 2019														
+// Platform:    Windows 10																	
+// Application: Single-User Test Harness, CSE687 - Object Oriented Design					
+// Author:      Lamont Harrington															
+//              Aaron Meche																	
+//              Chris Johnson																
+//              Jason Mitchell																
 //////////////////////////////////////////////////////////////////////////////////////////////////
 /*
-	Maintenance History
-	===================
-	DATE		VERSION		DESCRIPTION
-	----		-------		----------------------------------------------------------------------
-	10/8/2019	1.0			Initial Creation
-	10/15/2019	1.1			Changed test case base class implementation
+   Maintenance History
+   ===================
+   DATE         VERSION     DESCRIPTION
+   ----         -------     ----------------------------------------------------------------------
+   10/8/2019    1.0         Initial Creation
+   10/15/2019   1.0         Changed test case base class implementation
 */
 #include <iostream>
 #include "LambdaTestCase.h"

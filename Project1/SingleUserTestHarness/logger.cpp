@@ -1,19 +1,30 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// File:        Logger.cpp																
+// Purpose:     This file contains the implementation for the logger class reponsible for logging
+//              outputs of test case execution (including errors)
+// Version:     1.0																			
+// Language:    C++, Visual Studio 2019														
+// Platform:    Windows 10																	
+// Application: Single-User Test Harness, CSE687 - Object Oriented Design					
+// Author:      Lamont Harrington															
+//              Aaron Meche																	
+//              Chris Johnson																
+//              Jason Mitchell																
+//////////////////////////////////////////////////////////////////////////////////////////////////
 /*
-Author:         Aaron Meche
-Program:        Homework 1 - Logger Class Header file
-Description:    This File contains the header for an error message Logger class
-Date Due:       10/21/19
-Date Created:   10/13/19
-Date Last Mod:  10/13/19
-
-Input:          N/A
-Process:        N/A
-Output:         N/A
-Assumptions:    That the logger.cpp file exists in the same folder, subject to change depending on how project is structured
+   Maintenance History
+   ===================
+   DATE         VERSION     DESCRIPTION
+   ----         -------     ----------------------------------------------------------------------
+   10/8/2019    1.0         Initial Creation
+   10/17/2019   1.0         Cleaned up uncessary includes, renamed report() method to writeLog(),
+                            added additional input variable "message" containing text to be logged,
+                            added private helper meethod getDateTimeString() to build a formatted
+                            string containing date and time.
+   10/18/2019   1.0			Added additional input variable "result" containing the result (PASS/FAIL)
+                            of the test case execution
 */
-
-
-#include <fstream>
+#define _CRT_SECURE_NO_WARNINGS // Suppress warning that the use of localtime function may be unsafe
 #include <cstdlib>
 #include <iostream>
 #include <ctime>
@@ -21,30 +32,49 @@ Assumptions:    That the logger.cpp file exists in the same folder, subject to c
 
 using namespace std;
 
-Logger::Logger()
+void Logger::writeLog(LOGLEVEL logLevel, E_RESULT result, const char* message)
 {
-	
+	const char* resultOfTest = NULL;
+	switch (result) {
+	case PASS:
+		resultOfTest = "PASS";
+		break;
+	case FAIL:
+		resultOfTest = "FAIL";
+		break;
+	}
+
+    char* dt = getDateTimeString();
+	switch(logLevel)
+	{
+	case PASS_FAIL:
+		cout << "The test case as executed with the following status message:" << endl;
+		cout << "Message: " << message << endl;
+		break;
+	case PASS_FAIL_RESULT:
+		cout << "The test case as executed with the following application-specific message:" << endl;
+		cout << "Result: " << resultOfTest << endl;
+		cout << "Message: " << message << endl;
+		break;
+	case DEBUG_FAILURE_DETAIL:
+		cout << "An error occured while executing the test case. Detail below:" << endl;
+		cout << "Result: " << resultOfTest << endl;
+		cout << "Error: " << message << endl;
+		cout << "Time:  " << dt << endl;
+		break;
+	}
 }
 
-void Logger::report(LOGLEVEL log)
+char* Logger::getDateTimeString()
 {
-    time_t now = time(0);
-    char* dt = ctime(&now);
-	switch(log)
-	{
-		case PASS_FAIL:
-			cout << "Some kind of error" << endl;
-			break;
-		case PASS_FAIL_RESULT:
-			cout << "Some kind of error result" << endl;
-			break;
-		case DETAIL:
-			cout << "Some kind of detail. Testing the time and date stamp:" << endl;
-            cout << "The time this test executed is: " << dt << endl;
-			break;
-		default:
-			cout << "There was no error found in this test." << endl;
-			break;
-	}
-		
+	// Initialize and get current time
+	time_t currentTime = time(NULL);
+
+	// Allocate space for date string
+	char* dateTimeString = (char*)malloc(100);
+
+	// Format the time correctly
+	strftime(dateTimeString, 100, "[%F %T]", localtime(&currentTime));
+
+	return dateTimeString;
 }
