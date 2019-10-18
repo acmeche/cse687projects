@@ -20,7 +20,7 @@
                            closing program window
 */
 #include <iostream>
-#include "TestHarness.h";
+#include "TestHarness.h"
 using namespace CSE687_Project1;
 
 int main()
