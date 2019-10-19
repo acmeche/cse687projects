@@ -21,6 +21,12 @@
 
 namespace CSE687_Project1
 {
+	/**
+	* Class that acts as staging point to run all TestCase classes
+	* Satisfies the following project criteria:
+	*	1.) Shall be prepared using the latest version of Visual Studio, and written in the standard C++ programming language, using the standard C++ libraries.
+	*	2.) Shall provide a TestHarness class that defines an executor method
+	*/
 	class TestHarness
 	{
 	public:

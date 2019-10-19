@@ -25,6 +25,13 @@ using namespace CSE687_Project1;
 
 void CSE687_Project1::TestHarness::runTests()
 {
+	/**
+	* Try/catch to satisfy the following criteria:
+	*	1.) Shall be prepared using the latest version of Visual Studio, and written in the standard C++ programming language, using the standard C++ libraries.
+	*	3.) The executor method Shall invoke a passed callable object in the scope of a try block.
+	*		If exceptions are thrown, the catch block you define for this method shall log test failure
+	*		and the contents of the exception message.
+	*/
 	try {
 		TestCaseRegistry& testCaseRegistry(TestCaseRegistry::get());
 		for (TestCaseRegistry::iterator it = testCaseRegistry.begin(); it != testCaseRegistry.end(); ++it)
