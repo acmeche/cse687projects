@@ -1,33 +1,27 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
-//	File:			FunctorTestCase.cpp															//
-//	Purpose:		FunctorTestCase driver for Test Runner to exectue							//
-//	Version:		1.0																			//
-//	Language:		C++, Visual Studio 2019														//
-//	Platform:		Windows 10																	//
-//	Application:	Single-User Test Harness, CSE687 - Object Oriented Design					//
-//	Author:			Laamont Harrington															//
-//					Aaron Meche																	//
-//					Chris Johnson																//
-//					Jason Mitchell																//
+// File:        FunctorTestCase.cpp																
+// Purpose:     FunctorTestCase driver for Test Runner to execute
+// Version:     1.0																			
+// Language:    C++, Visual Studio 2019														
+// Platform:    Windows 10																	
+// Application: Single-User Test Harness, CSE687 - Object Oriented Design					
+// Author:      Lamont Harrington															
+//              Aaron Meche																	
+//              Chris Johnson																
+//              Jason Mitchell																
 //////////////////////////////////////////////////////////////////////////////////////////////////
 /*
-	Maintenance History
-	===================
-	DATE		VERSION		DESCRIPTION
-	----		-------		----------------------------------------------------------------------
-	10/16/2019	1.0			Initial Creation
+   Maintenance History
+   ===================
+   DATE         VERSION     DESCRIPTION
+   ----         -------     ----------------------------------------------------------------------
+   10/8/2019    1.0         Initial Creation
 */
 #include <iostream>
 #include "FunctorTestCase.h"
 
 namespace CSE687_Project1 {
 	bool FunctorTestCase::execute() {
-		std::cout << " FunctorTestCase executing..." << std::endl;
-		return true;
-	}
-	REGISTER_TEST_CASE(FunctorTestCase);
-
-	bool Functor1::execute() {
 		std::cout << " Functor1 is currently executing " << std::endl;
 		Line();
 		
@@ -53,7 +47,8 @@ namespace CSE687_Project1 {
 		Line();
 		return true;
 	}
-	REGISTER_TEST_CASE(Functor1);
+
+	REGISTER_TEST_CASE(FunctorTestCase);
 }
 
 
