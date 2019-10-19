@@ -51,5 +51,3 @@ namespace CSE687_Project1 {
 		std::cout << "=====================" << std::endl;
 	}
 }
-
-

@@ -36,7 +36,6 @@
         * Detailed debugging output that includes, on failure, values of application specific variables, and an optional time-date stamp
 
 */
-
 enum LOGLEVEL {
 	PASS_FAIL,
 	PASS_FAIL_RESULT,

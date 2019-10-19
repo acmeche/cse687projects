@@ -50,22 +50,3 @@ namespace CSE687_Project1 {
 
 	REGISTER_TEST_CASE(FunctorTestCase);
 }
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
