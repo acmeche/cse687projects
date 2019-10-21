@@ -58,13 +58,13 @@ namespace CSE687_Project1
         for (i = 0; i < x; ++i)
             for (j = 0; j < y; ++j)
             {
-                a[i][j] += j + i;
+                a[i][j] = j + i;
             }
         // Storing elements of second matrix.
         for (i = 0; i < c; ++i)
             for (j = 0; j < d; ++j)
             {
-                b[i][j] += j + i;
+                b[i][j] = j + i;
             }
         // Initializing elements of matrix mult to 0.
         for (i = 0; i < x; ++i)
@@ -104,13 +104,13 @@ namespace CSE687_Project1
         for (i = 0; i < x; ++i)
             for (j = 0; j < y; ++j)
             {
-                a[i][j] += j + i;
+                a[i][j] = j + i;
             }
         // Storing elements of second matrix.
         for (i = 0; i < c; ++i)
             for (j = 0; j < d; ++j)
             {
-                b[i][j] += j + i;
+                b[i][j] = j + i;
             }
         // Initializing elements of matrix mult to 0.
         for (i = 0; i < x; ++i)
