@@ -17,7 +17,7 @@
    ----         -------     ----------------------------------------------------------------------
    10/8/2019    1.0         Initial Creation
    10/15/2019   1.0         Changed test cae base class implementation
-   10/17/2019   1.0			Refactored original implementation in order to work with TestCaseBase
+   10/17/2019   1.0         Refactored original implementation in order to work with TestCaseBase
                             redesign
    10/18/2019   1.0         Updated implementation to account for logger. Also added additional test
 */

@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // File:        FunctorTestCase.cpp																
-// Purpose:     FunctorTestCase driver for Test Runner to execute
+// Purpose:     This file contains the implementation for the FunctorTestCase test case
 // Version:     1.0																			
 // Language:    C++, Visual Studio 2019														
 // Platform:    Windows 10																	

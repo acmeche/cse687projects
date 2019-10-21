@@ -1,7 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // File:        FunctorTestCase.h															
-// Purpose:     Derived class from TestBaseCase classe for the Single User Test Harness		 
-//																								
+// Purpose:     Header file for FunctorTestCase class																								
 // Version:     1.0																			
 // Language:    C++, Visual Studio 2019														
 // Platform:    Windows 10																	
@@ -17,7 +16,7 @@
    DATE          VERSION        DESCRIPTION
    ----          -------		------------------------------------------------------------------
    10/15/2019    1.0            Initial Creation
-   10/18/2019    1.0			      Code cleanup
+   10/18/2019    1.0            Code cleanup
    10/20/2019    1.0            Code Re work - JDM
 */
 #pragma once
