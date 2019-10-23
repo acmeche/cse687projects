@@ -2441,4 +2441,5 @@ This reverts commit f6f191b12865614df05257363917b3eada058909.' class="link-gray"
 **/.vs/
 **/Debug/
 **/Release/
+**/bin/
 
