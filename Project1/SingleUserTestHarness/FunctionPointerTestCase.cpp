@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
-// File:        LambdaTestCase.cpp																
-// Purpose:     This file contains the implementation for the LambdaTestCase test case
+// File:        FunctionPointerTestCase.cpp																
+// Purpose:     This file contains the implementation for the FunctionPointerTestCase test case
 // Version:     1.0																			
 // Language:    C++, Visual Studio 2019														
 // Platform:    Windows 10																	

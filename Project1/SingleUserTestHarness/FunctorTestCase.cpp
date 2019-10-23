@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // File:        FunctorTestCase.cpp																
-// Purpose:     FunctorTestCase driver for Test Runner to execute
+// Purpose:     This file contains the implementation for the FunctorTestCase test case
 // Version:     1.0																			
 // Language:    C++, Visual Studio 2019														
 // Platform:    Windows 10																	
@@ -15,38 +15,60 @@
    ===================
    DATE         VERSION     DESCRIPTION
    ----         -------     ----------------------------------------------------------------------
-   10/8/2019    1.0         Initial Creation
+   10/18/2019    1.0         Initial Creation
+   10/20/2019    1.0         Re worked most of the inital creation - JDM
 */
 #include <iostream>
 #include "FunctorTestCase.h"
 
 namespace CSE687_Project1 {
 	bool FunctorTestCase::execute() {
-		std::cout << " Functor1 is currently executing " << std::endl;
-		Line();
-		
-		std::cout << " Functor1 testing an odd and even " <<std::endl;
-		operator()(3);
-		Line();
-		
-		operator()(8);
-		Line();
+		// Member for aesthetics.
+		FunctorTestCase::sLine();
 
-		/*
-		 * I'm still learning the correct way to to perform a try block.
-		 * 
-		 try {
-			operator()(20.00004);
-		}
-		catch (const std::exception &exc) {
-			
-			std::cout << exc.what() << std::endl;
-			
-		} */
-		std::cout << " Functor1 passed and is leaving " << std::endl;
-		Line();
-		return true;
+		// Object to drive the test.
+		FunctorTestCase FunctUp;
+		
+		// Even test.
+		FunctUp.operator()(65534);
+		  if (FunctUp.eResult) {
+				std::string FunctMSG = " Test for Even: " + std::to_string(FunctUp.val);
+				logger.writeLog(LOGLEVEL::PASS_FAIL_RESULT, E_RESULT::PASS, FunctMSG.c_str());
+			}
+
+		// Odd test.
+		FunctUp.operator()(65535);
+			if (FunctUp.oResult) {
+				std::string FunctMSG = " Test for Odd: " + std::to_string(FunctUp.val);
+				logger.writeLog(LOGLEVEL::PASS_FAIL_RESULT, E_RESULT::PASS, FunctMSG.c_str());
+			}
+
+		// Exception test.
+			try {
+				FunctUp.operator()(0);
+			}
+			catch (std::invalid_argument) {
+				std::string FunctMSG = " Test for Invalid Input: " + std::to_string(FunctUp.val);
+				logger.writeLog(LOGLEVEL::DEBUG_FAILURE_DETAIL, E_RESULT::FAIL, FunctMSG.c_str());
+			}
+			try {
+				FunctUp.operator()(65536);
+			}
+			catch (std::invalid_argument) {
+				std::string FunctMSG = " Test for valid Input: " + std::to_string(FunctUp.val);
+				logger.writeLog(LOGLEVEL::DEBUG_FAILURE_DETAIL, E_RESULT::FAIL, FunctMSG.c_str());
+			}
+			try {
+				FunctUp.operator()(-1);
+			}
+			catch (std::invalid_argument) {
+				std::string FunctMSG = " Test for valid Input: " + std::to_string(FunctUp.val);
+				logger.writeLog(LOGLEVEL::DEBUG_FAILURE_DETAIL, E_RESULT::FAIL, FunctMSG.c_str());
+			}
+
+    // Member for aesthetics.
+		FunctorTestCase::eLine();
+		return 1;
 	}
-
 	REGISTER_TEST_CASE(FunctorTestCase);
 }

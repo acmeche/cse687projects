@@ -18,7 +18,7 @@
    ----         -------     ----------------------------------------------------------------------
    10/8/2019    1.0         Initial Creation
    10/15/2019   1.0         Added test harness frameweork
-   10/18/2019	1.0			Added logging
+   10/18/2019	1.0         Added logging
 */
 #include <iostream>
 #include "TestCaseBase.h"

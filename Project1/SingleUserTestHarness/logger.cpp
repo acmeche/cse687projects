@@ -21,7 +21,7 @@
                             added additional input variable "message" containing text to be logged,
                             added private helper meethod getDateTimeString() to build a formatted
                             string containing date and time.
-   10/18/2019   1.0			Added additional input variable "result" containing the result (PASS/FAIL)
+   10/18/2019   1.0         Added additional input variable "result" containing the result (PASS/FAIL)
                             of the test case execution
 */
 #define _CRT_SECURE_NO_WARNINGS // Suppress warning that the use of localtime function may be unsafe
