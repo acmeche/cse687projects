@@ -35,7 +35,7 @@ namespace CSE687_Project2 {
     {
     public:
 
-        bool execute();
+        __declspec(dllexport) bool execute();
 
     private:
 

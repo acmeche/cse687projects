@@ -45,8 +45,8 @@ namespace CSE687_Project2 {
     class TESTHARNESS_API TestCaseBase {
     public:
         virtual bool execute() = 0;
-    protected:
-        Logger logger;
+    //protected:
+    //    Logger logger;
     };
 
     template<class T> TestCaseBase* testCaseBase_factory() {

@@ -51,9 +51,9 @@ enum LOGGER_API E_RESULT {
     FAIL
 };
 
-class LOGGER_API Logger {
+static class LOGGER_API Logger {
 public:
-    void writeLog(LOGLEVEL logLevel, E_RESULT result, const char* message);
+    static void writeLog(LOGLEVEL logLevel, E_RESULT result, const char* message);
 private:
     static char* getDateTimeString();
 };

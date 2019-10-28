@@ -23,8 +23,10 @@
    10/22/2019   2.0         Coppied from project 1 to test functionality of calling classes from
                             different packages
 */
-#include <iostream>
+#include "pch.h"
 #include "LambdaTestCase.h"
+
+#include <iostream>
 
 namespace CSE687_Project2
 {
@@ -123,14 +125,14 @@ namespace CSE687_Project2
             lambda();
             result = true;
             message = "Lambda with signature " + std::string(typeid(lambda).name()) + " successfully executed";
-            logger.writeLog(logLevel, E_RESULT::PASS, message.c_str());
+            Logger::writeLog(logLevel, E_RESULT::PASS, message.c_str());
         }
         catch (const std::exception & e)
         {
             // Prints exption and fails 
             result = false;
             message = "Exception: " + std::string(e.what());
-            logger.writeLog(logLevel, E_RESULT::FAIL, message.c_str());
+            Logger::writeLog(logLevel, E_RESULT::FAIL, message.c_str());
         }
 
         return result;

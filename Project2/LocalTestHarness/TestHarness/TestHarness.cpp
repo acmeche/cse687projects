@@ -48,7 +48,6 @@ void CSE687_Project2::TestHarness::runTests()
         }
     }
     catch (...) {
-        Logger logger;
-        logger.writeLog(LOGLEVEL::DEBUG_FAILURE_DETAIL, E_RESULT::FAIL, "A general application error occured while executing test cases.");
+        Logger::writeLog(LOGLEVEL::DEBUG_FAILURE_DETAIL, E_RESULT::FAIL, "A general application error occured while executing test cases.");
     }
 }
