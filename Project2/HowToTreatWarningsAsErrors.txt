@@ -1,0 +1,10 @@
+1.) Right click on project (not solution) and select "Properties"
+2.) Go to Configuration Properties -> C/C++ -> General
+3.) Under "Treat Warnings As Errors", change from "No (/WX-)" to "Yes (/WX)" and click "Apply"
+	NOTE: This  setting only affects this one project and not the entire solution, so you will need to do this for all projects in the solution
+4.) Compile your project and mitigate the errors
+5.) Once the project builds with no warnings, right click the project again and select "Properties"
+6.) Go to Configuration Properties -> C/C++ -> General
+7.) Under "Treat Warnings As Errors", change from "Yes (/WX)" to "No (/WX-)" and click "Apply"
+
+NOTE: MAKE SURE TO SET THE "TREAT WARNINGS AS ERRORS" BACK TO "NO (/WX-)" OTHERWISE THIS SETTING WILL BE APPLIED TO EVERYONE

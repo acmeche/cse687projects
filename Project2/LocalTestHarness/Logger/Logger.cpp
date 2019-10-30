@@ -27,7 +27,6 @@
 */
 #include "pch.h"
 
-#define _CRT_SECURE_NO_WARNINGS // Suppress warning that the use of localtime function may be unsafe
 #include <cstdlib>
 #include <iostream>
 #include <ctime>

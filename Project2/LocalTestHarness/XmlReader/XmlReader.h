@@ -35,6 +35,12 @@ class __declspec(dllexport) XmlReader
 public:
   typedef std::vector<std::pair<std::string,std::string>> attribElems;
   XmlReader(const std::string& xml);
+  ~XmlReader()
+  {
+      delete _xml;
+      delete _tag;
+      delete _attributes;
+  }
   bool next();
   std::string tag();
   attribElems attributes();
@@ -44,11 +50,11 @@ public:
   void reset();
 private:
   // source string
-  std::string _xml;
+  std::string* _xml;
   size_t position;
   // current element parts
-  std::string _tag;
-  attribElems _attributes;
+  std::string* _tag;
+  attribElems* _attributes;
   size_t localposition;
 };
 

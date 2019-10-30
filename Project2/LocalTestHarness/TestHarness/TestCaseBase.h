@@ -57,8 +57,9 @@ namespace CSE687_Project2 {
 
     class TESTHARNESS_API TestCaseRegistry {
     private:
-        std::vector<testCaseBase_creator> m_testCases;
+        std::vector<testCaseBase_creator>* m_testCases;
     public:
+        ~TestCaseRegistry() { delete m_testCases; }
         typedef std::vector<testCaseBase_creator>::iterator iterator;
         static TestCaseRegistry& get();
         void add(testCaseBase_creator);

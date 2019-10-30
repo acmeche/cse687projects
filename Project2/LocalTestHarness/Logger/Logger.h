@@ -51,7 +51,7 @@ enum LOGGER_API E_RESULT {
     FAIL
 };
 
-static class LOGGER_API Logger {
+class LOGGER_API Logger {
 public:
     static void writeLog(LOGLEVEL logLevel, E_RESULT result, const char* message);
 private:

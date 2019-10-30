@@ -1,7 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
-// File:        Executive.cpp															
-// Purpose:     This is the source file for the Executive class, which will be responsible for
-//              running the test cases loaded from the TestRequest XML file. 
+// File:        Executive.cpp																
+// Purpose:     Responsible for initializing the executive class and running the test cases	
 // Version:     1.0																			
 // Language:    C++, Visual Studio 2019														
 // Platform:    Windows 10																	
@@ -14,20 +13,33 @@
 /*
    Maintenance History
    ===================
-   DATE         VERSION     DESCRIPTION
-   ----         -------     ----------------------------------------------------------------------
-   10/22/2019   1.0         Created shell of Executive class. Need to determine how the XML will be
-                            parsed and passed to this class.
+   DATE         VERSION    DESCRIPTION
+   ----         -------    ----------------------------------------------------------------------
+   10/8/2019    1.0        Initial Creation
+   10/17/2019   1.0        Added system pause command to allow user to see output on screen before
+                           closing program window
+   10/22/2019   2.0        Coppied TestRunner.cpp code into project and replaced it with Executive class
 */
 
-#include "pch.h"
-#include "Executive.h"
+#include <iostream>
+#include <fstream>
+#include <vector>
+
+#undef UNICODE 
+#include <Windows.h>
+#include <tchar.h>
+
 #include "TestHarness.h"
 
 using namespace CSE687_Project2;
 
-void Executive::runTests()
+typedef bool (*executeMethod)();
+
+int main(int argc, char** argv)
 {
     TestHarness harness;
     harness.runTests();
+
+    system("pause");
+    return 0;
 }
