@@ -24,6 +24,8 @@
    10/22/2019   2.0         Coppied from project 1 in order to meet project requirements
 */
 #pragma once
+#pragma warning( push )
+#pragma warning( disable : 4251 )
 
 #include "TestHarnessExporter.h"
 
@@ -57,9 +59,8 @@ namespace CSE687_Project2 {
 
     class TESTHARNESS_API TestCaseRegistry {
     private:
-        std::vector<testCaseBase_creator>* m_testCases;
+        std::vector<testCaseBase_creator> m_testCases;
     public:
-        ~TestCaseRegistry() { delete m_testCases; }
         typedef std::vector<testCaseBase_creator>::iterator iterator;
         static TestCaseRegistry& get();
         void add(testCaseBase_creator);
@@ -82,3 +83,4 @@ namespace CSE687_Project2 {
     TestCaseRegistration _testCase_registration_ ## testCase(&testCaseBase_factory<testCase>);
 
 }
+#pragma warning( pop )

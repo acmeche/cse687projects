@@ -35,17 +35,17 @@ namespace CSE687_Project2 {
 
     // Adds a new element to the vector
     void TestCaseRegistry::add(testCaseBase_creator creator) {
-        m_testCases->push_back(creator);
+        m_testCases.push_back(creator);
     }
 
     // Returns an iterator pointing to the first element in the vector
     TestCaseRegistry::iterator TestCaseRegistry::begin() {
-        return m_testCases->begin();
+        return m_testCases.begin();
     }
 
     // Returns an iterator referring to the past-the-end element in the vector container
     TestCaseRegistry::iterator TestCaseRegistry::end() {
-        return m_testCases->end();
+        return m_testCases.end();
     }
 
     // Used to register test case class with the Test Harness framework

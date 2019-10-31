@@ -20,6 +20,9 @@
    ----         -------     ----------------------------------------------------------------------
    10/22/2019   1.0         Initial creation
 */
+#pragma warning( push )
+#pragma warning( disable : 4251 )
+
 #include <vector>
 #include <string>
 
@@ -30,17 +33,12 @@
     2.)	Shall use Visual Studio, Community Edition available at no cost.
     4.)	Shall accept a TestRequest XML string defining one or more test elements by naming dynamic link libraries.
 */
+
 class __declspec(dllexport) XmlReader
 {
 public:
   typedef std::vector<std::pair<std::string,std::string>> attribElems;
   XmlReader(const std::string& xml);
-  ~XmlReader()
-  {
-      delete _xml;
-      delete _tag;
-      delete _attributes;
-  }
   bool next();
   std::string tag();
   attribElems attributes();
@@ -50,14 +48,15 @@ public:
   void reset();
 private:
   // source string
-  std::string* _xml;
+  std::string _xml;
   size_t position;
   // current element parts
-  std::string* _tag;
-  attribElems* _attributes;
+  std::string _tag;
+  attribElems _attributes;
   size_t localposition;
 };
 
 inline void XmlReader::reset() { position = 0; }
 
+#pragma warning( pop )
 #endif

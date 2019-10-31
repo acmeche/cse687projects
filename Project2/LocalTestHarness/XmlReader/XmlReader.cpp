@@ -15,7 +15,7 @@
 #include <algorithm>
 
 XmlReader::XmlReader(const std::string& xml) 
-  : _xml(&std::string(xml)), position(0), localposition(0) {}
+  : _xml(std::string(xml)), position(0), localposition(0) {}
 
 //----< helper identifies markup chars >-----------------------------
 
@@ -32,9 +32,9 @@ std::string XmlReader::extractIdentifier(size_t& pos)
   std::string ident;
   while(true)
   {
-    if(pos == _xml->size())
+    if(pos == _xml.size())
       return ident;
-    char ch = _xml->at(pos);
+    char ch = _xml.at(pos);
     if(specialChar(ch))
       ++pos;
     else
@@ -42,7 +42,7 @@ std::string XmlReader::extractIdentifier(size_t& pos)
   }
   while(true)
   {
-    char ch = _xml->at(pos);
+    char ch = _xml.at(pos);
     if(specialChar(ch))
       break;
     ident += ch;
@@ -56,62 +56,62 @@ std::string XmlReader::element()
 {
   // find tag
   localposition = position;
-  _tag = &extractIdentifier(localposition);
+  _tag = extractIdentifier(localposition);
 
   // is declaration?
   std::string decTag = "?xml";
-  if(_tag->compare("?xml") == 0)
+  if(_tag.compare("?xml") == 0)
   {
-    size_t locpos = _xml->find("?>");
-    return _xml->substr(position-1,locpos-position+3); 
+    size_t locpos = _xml.find("?>");
+    return _xml.substr(position-1,locpos-position+3); 
   }
 
   // is comment?
-  if(_tag->compare("!--") == 0)
+  if(_tag.compare("!--") == 0)
   {
-    size_t locpos = _xml->find("-->");
-    return _xml->substr(position-1,locpos-position+4); 
+    size_t locpos = _xml.find("-->");
+    return _xml.substr(position-1,locpos-position+4); 
   }
 
   // find end of element </tag>
   size_t locpos1 = localposition;
   std::stack<std::string> tagStack;
-  tagStack.push(*_tag);
+  tagStack.push(_tag);
   while(true)
   {
-    locpos1 = _xml->find(*_tag,locpos1);
-    if(locpos1 >= _xml->size())
+    locpos1 = _xml.find(_tag,locpos1);
+    if(locpos1 >= _xml.size())
       break;
-    if(_xml->at(locpos1-1)=='/')
+    if(_xml.at(locpos1-1)=='/')
       tagStack.pop();
-    else if(_xml->at(locpos1-1)=='<')
-      tagStack.push(*_tag);
+    else if(_xml.at(locpos1-1)=='<')
+      tagStack.push(_tag);
     if(tagStack.size() == 0)
       break;
     ++locpos1;
   }
 
   // find end element <tag />
-  size_t locpos2 = _xml->find(">",localposition);
-  if(_xml->at(locpos2-1) != '/')
-    locpos2 = _xml->size();
+  size_t locpos2 = _xml.find(">",localposition);
+  if(_xml.at(locpos2-1) != '/')
+    locpos2 = _xml.size();
 
   // find end element
   localposition = std::min(locpos1,locpos2);
-  if(localposition >= _xml->size())
+  if(localposition >= _xml.size())
     throw std::exception("malformed XML");
   if(localposition == locpos1)
   {
-    localposition = _xml->find('>',localposition);
-    return _xml->substr(position-1, localposition - position +2);
+    localposition = _xml.find('>',localposition);
+    return _xml.substr(position-1, localposition - position +2);
   }
-  return _xml->substr(position-1, localposition - position + 2);
+  return _xml.substr(position-1, localposition - position + 2);
 }
 //----< return body string >-----------------------------------------
 
 std::string XmlReader::body()
 {
-  if(_tag->compare("?xml")==0 || _tag->compare("!--")==0)
+  if(_tag.compare("?xml")==0 || _tag.compare("!--")==0)
   {
     return "";
   }
@@ -133,11 +133,11 @@ bool XmlReader::next()
 {
   while(true)
   {
-    position = _xml->find('<',position);
-    if(position >= _xml->size())
+    position = _xml.find('<',position);
+    if(position >= _xml.size())
       return false;
     ++position;
-    if(_xml->at(position) != '/')
+    if(_xml.at(position) != '/')
       break;
   }
   return true;
@@ -153,29 +153,29 @@ std::string XmlReader::tag()
 
 XmlReader::attribElems XmlReader::attributes()
 {
-  _attributes->clear();
-  if(_tag->compare("?xml")==0 || _tag->compare("!--")==0)
-    return *_attributes;
+  _attributes.clear();
+  if(_tag.compare("?xml")==0 || _tag.compare("!--")==0)
+    return _attributes;
   localposition = position;
   // move past tag
   extractIdentifier(localposition);
 
   // find attributes
-  size_t locpos = _xml->find('>',localposition);
+  size_t locpos = _xml.find('>',localposition);
   while(true)
   {
     std::string name = extractIdentifier(localposition);
     if(locpos < localposition)
-      return *_attributes;
+      return _attributes;
     std::string value = extractIdentifier(localposition);
     if(locpos < localposition)
       throw std::exception("malformed XML");
     std::pair<std::string,std::string> elem;
     elem.first = name;
     elem.second = value;
-    _attributes->push_back(elem);
+    _attributes.push_back(elem);
   }
-  return *_attributes;
+  return _attributes;
 }
 //----< test stub >--------------------------------------------------
 
