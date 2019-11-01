@@ -1,18 +1,38 @@
-///////////////////////////////////////////////////////////////////////
-// XmlReader.cpp - Parse XML strings                                 //
-// ver 2                                                             //
-// Language:    Visual C++, Visual Studio 2010, SP1                  //
-// platform:    Toshiba Portege R705, Windows 7, Home Premium, SP1   //
-// Application: Summer 2011 Projects                                 //
-// Author:      Jim Fawcett, Syracuse University, CST 4-187          //
-//              www.lcs.syr.edu/faculty/fawcett, (315) 443-3948      //
-///////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// File:        XmlReader.cpp																
+// Purpose:     Parse XML strings with additional DLL library functionality
+// Version:     1.0																			
+// Language:    C++, Visual Studio 2019														
+// Platform:    Windows 10																	
+// Application: Single-User Test Harness, CSE687 - Object Oriented Design					
+// Author:      Lamont Harrington															
+//              Aaron Meche																	
+//              Chris Johnson																
+//              Jason Mitchell																
+//////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+   Maintenance History
+   ===================
+   DATE         VERSION    DESCRIPTION
+   ----         -------    ----------------------------------------------------------------------
+   10/28/2019    1.0       Initial Creation
+   10/30/2019	   1.0       Added a new constructor that accepts a filestream object, created a new private
+						               data member std::string path (the option to store a file path) along with a getPath
+						               and setPath function, and added the public member function getTestRequestDllLocations(),
+						               which allows for reading DLL locations from an XML file.
+						   
+*/
 #include "pch.h"
 
 #include "XmlReader.h"
 #include <ctype.h>
 #include <stack>
 #include <algorithm>
+#include <fstream>
+#include <iostream>
+#include <istream>
+#include <string>
+#include <sstream>
 
 XmlReader::XmlReader(const std::string& xml) 
   : _xml(std::string(xml)), position(0), localposition(0) {}
@@ -25,6 +45,26 @@ bool specialChar(char ch)
   test = test || ch == '\'' || ch == '"';
   return test;
 }
+
+XmlReader::XmlReader(std::stringstream xmlDoc)
+	: position(0), localposition(0)
+{
+
+	xmlDoc << std::ifstream(xmlConfigPath).rdbuf();
+	XmlReader xmlReader(xmlDoc.str());
+
+}
+
+std::string XmlReader::getPath()
+{
+	return path;
+}
+
+void XmlReader::setPath(std::string filePath)
+{
+	path = filePath;
+}
+
 //----< helper finds identifiers >-----------------------------------
 
 std::string XmlReader::extractIdentifier(size_t& pos)
