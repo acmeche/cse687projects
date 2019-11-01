@@ -16,7 +16,7 @@
 	 DATE         VERSION     DESCRIPTION
 	 ----         -------     ----------------------------------------------------------------------
 	 10/18/2019   1.0         Added class to solution
-   10/30/2019   2.0         Copied from SingleUserTestHarness for implentation in LocalTestHarness
+     10/30/2019   2.0         Copied from SingleUserTestHarness for implentation in LocalTestHarness
 */
 #include "pch.h"
 #include <stdexcept>

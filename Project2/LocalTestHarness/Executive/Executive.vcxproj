@@ -109,7 +109,8 @@
     <PostBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)bin\$(PlatformTarget)\$(Configuration)\Logger.dll" "$(OutDir)"
 xcopy /y /d "$(SolutionDir)bin\$(PlatformTarget)\$(Configuration)\TestHarness.dll" "$(OutDir)"
-xcopy /y /d "$(SolutionDir)bin\$(PlatformTarget)\$(Configuration)\XmlReader.dll" "$(OutDir)"</Command>
+xcopy /y /d "$(SolutionDir)bin\$(PlatformTarget)\$(Configuration)\XmlReader.dll" "$(OutDir)"
+xcopy /y /d "$(SolutionDir)TestXml.xml" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -190,11 +191,17 @@ xcopy /y /d "$(SolutionDir)bin\$(PlatformTarget)\$(Configuration)\XmlReader.dll"
     <PostBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)bin\$(PlatformTarget)\$(Configuration)\Logger.dll" "$(OutDir)"
 xcopy /y /d "$(SolutionDir)bin\$(PlatformTarget)\$(Configuration)\TestHarness.dll" "$(OutDir)"
-xcopy /y /d "$(SolutionDir)bin\$(PlatformTarget)\$(Configuration)\XmlReader.dll" "$(OutDir)"</Command>
+xcopy /y /d "$(SolutionDir)bin\$(PlatformTarget)\$(Configuration)\XmlReader.dll" "$(OutDir)"
+xcopy /y /d "$(SolutionDir)TestXml.xml" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Executive.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XmlReader\XmlReader.vcxproj">
+      <Project>{21c5cd4e-6cf8-4bfd-abc4-a34f82cf369b}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
