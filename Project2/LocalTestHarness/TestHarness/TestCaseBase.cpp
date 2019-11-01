@@ -20,6 +20,7 @@
    10/8/2019    1.0         Initial Creation
    10/15/2019   1.0         Added test harness frameweork
    10/22/2019   2.0         Coppied from project 1 in order to meet project requirements
+   11/1/2019    2.1         Fixed access violation where dll was being released before reference to dll TestCaseBase object was
 */
 #include "pch.h"
 #pragma once
@@ -36,6 +37,12 @@ namespace CSE687_Project2 {
     // Adds a new element to the vector
     void TestCaseRegistry::add(testCaseBase_creator creator) {
         m_testCases.push_back(creator);
+    }
+
+    // Remove an element from the TestCase vector
+    void TestCaseRegistry::remove(testCaseBase_creator creator) {
+        auto it = std::find(m_testCases.begin(), m_testCases.end(), creator);
+        m_testCases.erase(it);
     }
 
     // Returns an iterator pointing to the first element in the vector

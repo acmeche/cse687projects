@@ -22,6 +22,7 @@
    10/18/2019   1.0         Added Logger as a protected member. Each test case instance will be
                             responsible for their own logging
    10/22/2019   2.0         Coppied from project 1 in order to meet project requirements
+   11/1/2019    2.1         Fixed access violation where dll was being released before reference to dll TestCaseBase object was
 */
 #pragma once
 #pragma warning( push )
@@ -64,6 +65,7 @@ namespace CSE687_Project2 {
         typedef std::vector<testCaseBase_creator>::iterator iterator;
         static TestCaseRegistry& get();
         void add(testCaseBase_creator);
+        void remove(testCaseBase_creator);
         iterator begin();
         iterator end();
     };

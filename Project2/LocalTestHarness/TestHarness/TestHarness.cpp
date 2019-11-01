@@ -20,6 +20,7 @@
    10/15/2019   1.0         Added test harness frameweork
    10/18/2019	1.0			Added logging
    10/22/2019   2.0         Coppied from project 1 in order to meet project requirements
+   11/1/2019    2.1         Fixed access violation where dll was being released before reference to dll TestCaseBase object was
 */
 #include "pch.h"
 #include <iostream>
@@ -38,6 +39,7 @@ void CSE687_Project2::TestHarness::runTests()
     *		and the contents of the exception message.
     */
     try {
+        std::vector<testCaseBase_creator> doneCases;
         TestCaseRegistry& testCaseRegistry(TestCaseRegistry::get());
         for (TestCaseRegistry::iterator it = testCaseRegistry.begin(); it != testCaseRegistry.end(); ++it)
         {
@@ -45,6 +47,12 @@ void CSE687_Project2::TestHarness::runTests()
             TestCaseBase* funcPtr = func();
             std::auto_ptr<TestCaseBase> testCase(funcPtr);
             testCase->execute();
+            doneCases.push_back(func);
+        }
+
+        for (auto testCase : doneCases)
+        {
+            testCaseRegistry.remove(testCase);
         }
     }
     catch (...) {
