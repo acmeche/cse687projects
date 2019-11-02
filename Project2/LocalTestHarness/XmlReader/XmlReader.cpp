@@ -63,6 +63,21 @@ void XmlReader::setPath(std::string filePath)
 	path = filePath;
 }
 
+std::vector<std::string> XmlReader::getTestRequestDllLocations()
+{
+	std::vector<std::string> returnVec;
+	while (next())
+	{
+		std::string mainTag = tag().c_str();
+		if (mainTag == TEST_REQUEST_TAG)
+		{
+			std::string dllLocation = body().c_str();
+			returnVec.push_back(dllLocation);
+		}
+	}
+	return returnVec;
+}
+
 //----< helper finds identifiers >-----------------------------------
 
 std::string XmlReader::extractIdentifier(size_t& pos)
