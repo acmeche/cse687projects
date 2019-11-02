@@ -2,8 +2,7 @@
 #define XMLREADER_H
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // File:        XmlReader.h														
-// Purpose:     Header file that acts as the declaration of XmlReader code. This code was imported
-//              from Dr. Fawcett's CSE 687 course site.
+// Purpose:     Header file that acts as the declaration of XmlReader code.
 // Version:     1.0																			
 // Language:    C++, Visual Studio 2019														
 // Platform:    Windows 10																	
@@ -24,7 +23,9 @@
 #pragma warning( disable : 4251 )
 
 #include <vector>
+#include <fstream>
 #include <string>
+#include <sstream>
 
 /**
 * This class was imported to satisfy the following criteria:
@@ -37,10 +38,15 @@
 class __declspec(dllexport) XmlReader
 {
 public:
+  const static std::string TEST_REQUEST_TAG;
   typedef std::vector<std::pair<std::string,std::string>> attribElems;
   XmlReader(const std::string& xml);
+  XmlReader(std::stringstream xmlDoc);
   bool next();
   std::string tag();
+  std::string getPath(); // returns a string containing a file path
+  void setPath(std::string filePath);  // sets the path variable with a string denoating a file path
+  std::vector<std::string> getTestRequestDllLocations();
   attribElems attributes();
   std::string body();
   std::string element();
@@ -50,6 +56,7 @@ private:
   // source string
   std::string _xml;
   size_t position;
+  std::string path; //path for file
   // current element parts
   std::string _tag;
   attribElems _attributes;
