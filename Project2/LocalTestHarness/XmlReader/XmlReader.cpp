@@ -37,15 +37,6 @@
 XmlReader::XmlReader(const std::string& xml) 
   : _xml(std::string(xml)), position(0), localposition(0) {}
 
-//----< helper identifies markup chars >-----------------------------
-
-bool specialChar(char ch)
-{
-  bool test = isspace(ch) || ch == '/' || ch == '>' || ch == '<' || ch == '=';
-  test = test || ch == '\'' || ch == '"';
-  return test;
-}
-
 XmlReader::XmlReader(std::stringstream xmlDoc)
 	: position(0), localposition(0)
 {
@@ -53,6 +44,15 @@ XmlReader::XmlReader(std::stringstream xmlDoc)
 	xmlDoc << std::ifstream(xmlConfigPath).rdbuf();
 	XmlReader xmlReader(xmlDoc.str());
 
+}
+
+//----< helper identifies markup chars >-----------------------------
+
+bool specialChar(char ch)
+{
+  bool test = isspace(ch) || ch == '/' || ch == '>' || ch == '<' || ch == '=';
+  test = test || ch == '\'' || ch == '"';
+  return test;
 }
 
 std::string XmlReader::getPath()
