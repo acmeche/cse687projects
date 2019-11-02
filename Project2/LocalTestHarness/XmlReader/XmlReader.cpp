@@ -40,10 +40,8 @@ XmlReader::XmlReader(const std::string& xml)
 XmlReader::XmlReader(std::stringstream xmlDoc)
 	: position(0), localposition(0)
 {
-
 	xmlDoc << std::ifstream(xmlConfigPath).rdbuf();
 	XmlReader xmlReader(xmlDoc.str());
-
 }
 
 //----< helper identifies markup chars >-----------------------------
