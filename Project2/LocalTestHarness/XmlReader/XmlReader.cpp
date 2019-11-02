@@ -16,10 +16,10 @@
    DATE         VERSION    DESCRIPTION
    ----         -------    ----------------------------------------------------------------------
    10/28/2019    1.0       Initial Creation
-   10/30/2019	   1.0       Added a new constructor that accepts a filestream object, created a new private
-						               data member std::string path (the option to store a file path) along with a getPath
-						               and setPath function, and added the public member function getTestRequestDllLocations(),
-						               which allows for reading DLL locations from an XML file.
+   11/01/2019	 1.0       Added a new constructor that accepts a filestream object, created a new private 
+   			   data member std::string path (the option to store a file path) along with a getPath
+			   and setPath function, and added the public member function getTestRequestDllLocations(),
+			   which allows for reading DLL locations from an XML file.
 						   
 */
 #include "pch.h"
